@@ -13,14 +13,27 @@
 typedef enum
 {
     AUTOMATIC,
-    MANUAL
+    MANUAL,
+    UNKNOWN_WORK_STATE
 } WorkState;
 
 typedef enum
 {
     OK,
-    UNCONNECTED
+    UNCONNECTED,
+    NOT_AVAILABLE,
+    UNCON_NOTAVAIL,
+    UNKNOWN_PROBLEM_STATE
 } ProblemState;
+
+typedef enum
+{
+    IDLE,
+    STATE,
+    VALVE,
+    ALL,
+    UNKNOWN_HANDSHAKE_STATE
+} HandshakeState;
 
 /* ---- CLASS STATE ---- */
 class State
@@ -29,9 +42,16 @@ public:
 private:
     static WorkState workState;
     static ProblemState systemState;
+    static HandshakeState handshakeState;
     static int valvePercentage;
+    static float waterLevel;
 
 public:
+    static void setHandshakeState(HandshakeState newState);
+    static bool matchHandshakeState(HandshakeState state);
+    static bool isNotHandshakeState(HandshakeState state);
+    static String handshakeStateToString(HandshakeState state);
+    static HandshakeState stringToHandshakeState(const char *stateString);
     static void setWorkState(WorkState newState);
     static bool matchWorkState(WorkState state);
     static bool isNotWorkState(WorkState state);
@@ -47,9 +67,14 @@ public:
     static inline void setPercentage(int percentage) {
         valvePercentage = percentage;
     }
-
+    static inline void setWaterLevel(float water) {
+        waterLevel = water;
+    }
     static inline int getPercentage() {
         return valvePercentage;
+    }
+    static inline float getWaterLevel() {
+        return waterLevel;
     }
 };
 

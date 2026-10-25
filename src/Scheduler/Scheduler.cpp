@@ -2,14 +2,12 @@
 
 Scheduler::Scheduler(Timer &t) : timer(t) {
     nTasks = 0;
-    activateTaskLed = false;
 }
 
 void Scheduler::init(int basePeriod) {
     this->basePeriod = basePeriod;
     timer.setupPeriod(basePeriod);
     nTasks = 0;
-    activateTaskLed = false;
 }
 
 bool Scheduler::addTask(Task *task) {

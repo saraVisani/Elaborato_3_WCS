@@ -17,7 +17,7 @@ int ServoMotor::angleToPulse(){
 void ServoMotor::setPosition(int angle) {
     this->angle = angle;
     motor.write(angleToPulse());
-    opened = (angle == 180);
+    opened = (angle == 90);
     closed = (angle == 0);
 }
 
@@ -26,11 +26,21 @@ void ServoMotor::setPosition(int angle) {
 // -------------------------
 
 void ServoMotor::open() {
-    if(targetAngle != 180) targetAngle = 180;
+    if(targetAngle != 90) targetAngle = 90;
 }
 
 void ServoMotor::close() {
     if(targetAngle != 0) targetAngle = 0;
+}
+
+void ServoMotor::setNewAngle(int angle) {
+    if(angle < 0 || angle > 90) return;
+    targetAngle = angle;
+}
+
+void ServoMotor::setAngleWithPercentage(int perc) {
+    int angle = map(perc, 0, 100, 0, 90);
+    this->setNewAngle(angle);
 }
 
 void ServoMotor::update() {

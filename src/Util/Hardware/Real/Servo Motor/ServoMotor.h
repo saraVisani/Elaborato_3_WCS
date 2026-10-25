@@ -13,7 +13,7 @@ class ServoMotor : public IServoMotor {
         int targetAngle = 0;
         unsigned long lastStepTime = 0;
         unsigned int stepDelay = 20;
-        int stepSize = 2;
+        int stepSize = 1;
         int angleToPulse();
     public:
         void init(int pin = 0) override;
@@ -35,12 +35,17 @@ class ServoMotor : public IServoMotor {
         inline bool isOpening() const override {
             return !isOpened() && targetAngle == 180;
         }
+        inline bool isMoving() const override {
+            return angle != targetAngle;
+        }
         inline int getAngle() const override {
             return angle;
         }
         void close() override;
         void open() override;
         void update() override;
+        void setAngleWithPercentage(int perc) override;
+        void setNewAngle(int angle) override;
         void setPosition(int angle) override;
 };
 

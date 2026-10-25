@@ -13,7 +13,7 @@ Spot sensorPotInstance;
 Lcd lcdDisplayInstance;
 ServoMotor servoMotorInstance;
 
-IButton* buttonReset = &buttonResetInstance;
+IButton* buttonSwitch = &buttonResetInstance;
 ISpot* sensorPot = &sensorPotInstance;
 ILcd* lcdDisplay = &lcdDisplayInstance;
 IServoMotor* servoMotor = &servoMotorInstance;
@@ -23,7 +23,7 @@ RealHardware::RealHardware() {
 }
 
 void RealHardware::initAllHardware() {
-    buttonReset->init();
+    buttonSwitch->init();
     sensorPot->init();
     lcdDisplay->init();
     servoMotor->init();

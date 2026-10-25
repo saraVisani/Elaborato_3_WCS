@@ -9,6 +9,8 @@ public:
         return HardwareType::BUTTON;
     }
     virtual bool isPressed() const = 0;
+    virtual void enable() = 0;
+    virtual void disable() = 0;
     virtual void addInterrupt() = 0;
 };
 

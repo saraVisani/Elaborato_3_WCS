@@ -7,7 +7,7 @@
 #include "Util/Hardware/Api/IButton.h"
 #include "Util/Hardware/Api/ISpot.h"
 
-extern IButton* buttonReset;
+extern IButton* buttonSwitch;
 extern ISpot* sensorPot;
 extern ILcd* lcdDisplay;
 extern IServoMotor* servoMotor;

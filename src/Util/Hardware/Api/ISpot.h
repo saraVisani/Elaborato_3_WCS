@@ -9,6 +9,8 @@ class ISpot : public Component {
             return HardwareType::POTENTIOMETER;
         }
         virtual int readPercentage() const = 0;
+        virtual void enable() = 0;
+        virtual void disable() = 0;
 };
 
 #endif

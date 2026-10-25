@@ -14,7 +14,10 @@ class IServoMotor : public Component {
         virtual bool isOpened() const = 0;
         virtual bool isClosing() const = 0;
         virtual bool isOpening() const = 0;
+        virtual bool isMoving() const = 0;
         virtual int getAngle() const = 0;
+        virtual void setNewAngle(int angle) = 0;
+        virtual void setAngleWithPercentage(int perc) = 0;
         virtual void close() = 0;
         virtual void open() = 0;
         virtual void update() = 0;
