@@ -17,9 +17,6 @@ class InputOutput: public Task {
         bool checkForNumber(const String& input, float& result);
     public:
         void tick() override;
-        bool guard() override {
-            return State::matchSystemState(OK);
-        }
         inline TaskType getType() override {
             return T_INPUTOUTPUT;
         }

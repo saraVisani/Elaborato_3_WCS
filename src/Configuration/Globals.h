@@ -70,6 +70,12 @@ public:
     static inline void setWaterLevel(float water) {
         waterLevel = water;
     }
+    static inline HandshakeState getHandshake(){
+        return handshakeState;
+    }
+    static inline ProblemState getSystemState(){
+        return systemState;
+    }
     static inline int getPercentage() {
         return valvePercentage;
     }

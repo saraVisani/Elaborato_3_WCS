@@ -8,6 +8,8 @@ class ILcd : public Component {
         inline HardwareType getType() override {
             return HardwareType::LCD;
         }
+        virtual void printIn(int index[2][6], String messages[2][3], int elem1, int elem2) = 0;
+        virtual void printIn(int index[2][6], const char* messages[2][3], int elem1, int elem2) = 0;
         virtual void printLine(const char* message, int line = 0) = 0;
         virtual void printLine(const String& message, int line = 0) = 0;
         virtual void print(const char* message0, const char* message1) = 0;

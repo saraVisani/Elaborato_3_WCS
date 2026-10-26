@@ -12,6 +12,18 @@ class Lcd : public ILcd {
     public:
         void init(int pin = 0) override;
         void printLine(const char* message, int line = 0) override;
+        void printIn(int index[2][6], String messages[2][3], int elem1, int elem2){
+            const char* charMessages[2][3];
+            for (int i = 0; i < 2; i++) {
+                int count = (i == 0) ? elem1 : elem2;
+
+                for (int j = 0; j < count; j++) {
+                    charMessages[i][j] = messages[i][j].c_str();
+                }
+            }
+            printIn(index, charMessages, elem1, elem2);
+        }
+        void printIn(int index[2][6], const char* messages[2][3], int elem1, int elem2);
         inline void printLine(const String& message, int line = 0)  override {
             printLine(message.c_str(), line);
         }
