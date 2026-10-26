@@ -5,7 +5,8 @@
 
 class ManualValve: public Task{
     private:
-        unsigned int lastChange = 0;
+        int lastMeasure = -1;
+        unsigned long lastChange = 0;
         const unsigned int THRESHOLD = 1000;
     public:
     void tick() override;

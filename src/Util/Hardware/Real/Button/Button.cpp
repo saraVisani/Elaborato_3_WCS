@@ -20,6 +20,7 @@ void Button::irs() {
     }
     if (lastPress == 0 || millis() - lastPress >= threshold) {
         if(State::matchWorkState(WorkState::AUTOMATIC)){
+            firstChangeAuto = true;
             State::setWorkState(WorkState::MANUAL);
         } else {
             State::setWorkState(WorkState::AUTOMATIC);

@@ -39,7 +39,11 @@ class ServoMotor : public IServoMotor {
             return angle != targetAngle;
         }
         inline int getAngle() const override {
-            return angle;
+            int percentage = map(angle, 0, 90, 0, 100);
+            if (angle == targetAngle) {
+                percentage = ((percentage + 2) / 5) * 5;
+            }
+            return constrain(percentage, 0, 100);
         }
         void close() override;
         void open() override;

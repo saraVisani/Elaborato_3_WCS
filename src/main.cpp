@@ -17,7 +17,7 @@ void setup() {
   manualTask->init(50);
   scheduler.addTask(manualTask);
   Task* valveTask = new UpdateValve();
-  valveTask->init(25);
+  valveTask->init(75);
   scheduler.addTask(valveTask);
   lcdDisplay->print("AUTO    WL   0.0", "NOW   0% OBJ  0%");
 }

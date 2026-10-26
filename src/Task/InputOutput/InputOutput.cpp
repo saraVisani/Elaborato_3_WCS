@@ -16,6 +16,9 @@ void InputOutput::read() {
                     State::setHandshakeState(HandshakeState::IDLE);
                     buttonSwitch->enable();
                     sensorPot->enable();
+                    if(temp == WorkState::MANUAL){
+                        firstChangeAuto = true;
+                    }
                 } else {
                     State::setHandshakeState(HandshakeState::UNKNOWN_HANDSHAKE_STATE);
                 }

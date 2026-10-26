@@ -3,12 +3,24 @@
 void ManualValve::tick()
 {
     int temp = sensorPot->readPercentage();
-    servoMotor->setAngleWithPercentage(temp);
-    unsigned int now = millis();
-    if(lastChange == 0){
-        lastChange = now;
+    if(firstChangeAuto){
+        Serial.println(lastMeasure);
+        Serial.println(temp);
+        if(lastMeasure == temp){
+            return;
+        }
+        firstChangeAuto = false;
     }
-    if(now - lastChange >= THRESHOLD){
-        State::setPercentage(temp);
+    unsigned long now = millis();
+    servoMotor->setAngleWithPercentage(temp);
+    if (temp != lastMeasure) {
+        lastMeasure = temp;
+        lastChange = now;
+        return;
+    }
+    if (now - lastChange >= THRESHOLD) {
+        if (State::getPercentage() != temp) {
+            State::setPercentage(temp);
+        }
     }
 }

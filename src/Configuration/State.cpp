@@ -1,5 +1,7 @@
 #include "Globals.h"
 
+extern volatile bool firstChangeAuto = false;
+
 bool matchHardwareType(HardwareType t1, String t2) {
     HardwareType ht;
     if(t2 == "BUTTON") ht = BUTTON;

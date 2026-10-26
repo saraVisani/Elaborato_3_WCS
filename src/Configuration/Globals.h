@@ -5,8 +5,10 @@
 
 /* ---- PINS FOR HARDWARE ---- */
 #define B_SWITCH 2          // pin
-#define P_SERVOMOTOR 10     // pin
+#define P_SERVOMOTOR 9     // pin
 #define P_VALVE A3          // pin
+
+extern volatile bool firstChangeAuto;
 
 /* ---- ENUM FOR THE STATUSES ---- */
 
